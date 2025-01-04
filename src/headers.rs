@@ -2,7 +2,7 @@ use crate::{MailHeader, MailHeaderMap};
 use std::fmt;
 use std::slice;
 
-/// A struct that wrapps the header portion of a message and provides
+/// A struct that wraps the header portion of a message and provides
 /// utility functions to look up specific headers.
 pub struct Headers<'a> {
     raw_bytes: &'a [u8],

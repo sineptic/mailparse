@@ -1096,7 +1096,7 @@ fn compute_parameter_encodings(
             let continuation_prefix = format!("{}*", unwrap_key);
             for continuation_key in decode_key_list {
                 if continuation_key.starts_with(&continuation_prefix) {
-                    // This may (intentionally) overwite encodings previously found for the
+                    // This may (intentionally) overwrite encodings previously found for the
                     // continuation segments (which are bogus). In those cases, the flag
                     // in the tuple should get updated from true to false.
                     encodings.insert(

@@ -68,7 +68,7 @@ fn seconds_to_date(year: i64, month: i64, day: i64) -> i64 {
 
 /// Convert a date field from an email header into a UNIX epoch timestamp.
 /// This function handles the most common formatting of date fields found in
-/// email headers. It may fail to parse some of the more creative formattings.
+/// email headers. It may fail to parse some of the more creative formatting.
 ///
 /// # Examples
 /// ```
