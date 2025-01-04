@@ -53,7 +53,7 @@ impl<'a> IntoIterator for Headers<'a> {
     type IntoIter = slice::Iter<'a, MailHeader<'a>>;
 
     fn into_iter(self) -> Self::IntoIter {
-        self.headers.into_iter()
+        self.headers.iter()
     }
 }
 
@@ -73,7 +73,7 @@ impl<'a> IntoIterator for Headers<'a> {
 ///                headers: [MailHeader { key: \"Subject\", value: \"foo\" }, \
 ///                MailHeader { key: \"Another header\", value: \"bar\" }] }");
 /// ```
-impl<'a> fmt::Debug for Headers<'a> {
+impl fmt::Debug for Headers<'_> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("Headers")
             .field("headers", &self.headers)
@@ -81,7 +81,7 @@ impl<'a> fmt::Debug for Headers<'a> {
     }
 }
 
-impl<'a> MailHeaderMap for Headers<'a> {
+impl MailHeaderMap for Headers<'_> {
     /// # Examples
     /// ```
     ///     use mailparse::{parse_mail, MailHeaderMap, headers::Headers};

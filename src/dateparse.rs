@@ -80,7 +80,7 @@ pub fn dateparse(date: &str) -> Result<i64, MailParseError> {
     let mut month = 0;
     let mut day_of_month = 0;
     let mut state = DateParseState::Date;
-    for tok in date.split(|c| c == ' ' || c == ':') {
+    for tok in date.split([' ', ':']) {
         if tok.is_empty() {
             continue;
         }
