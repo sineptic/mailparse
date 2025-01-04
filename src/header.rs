@@ -36,6 +36,7 @@ fn is_boundary(line: &str, ix: Option<usize>) -> bool {
         .unwrap_or(true)
 }
 
+#[allow(clippy::unnecessary_unwrap)]
 fn decode_word(encoded: &str) -> Option<String> {
     let ix_delim1 = encoded.find('?')?;
     let ix_delim2 = find_from(encoded, ix_delim1 + 1, "?")?;
