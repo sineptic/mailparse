@@ -43,7 +43,7 @@ impl<'a> Body<'a> {
             .unwrap_or_else(|| Body::get_default(body, ctype))
     }
 
-    fn get_default(body: &'a [u8], ctype: &'a ParsedContentType) -> Body<'a> {
+    const fn get_default(body: &'a [u8], ctype: &'a ParsedContentType) -> Body<'a> {
         Body::SevenBit(TextBody { body, ctype })
     }
 }
@@ -57,12 +57,12 @@ pub struct EncodedBody<'a> {
 
 impl<'a> EncodedBody<'a> {
     /// Get the body Content-Type
-    pub fn get_content_type(&self) -> &'a ParsedContentType {
+    pub const fn get_content_type(&self) -> &'a ParsedContentType {
         self.ctype
     }
 
     /// Get the raw body of the message exactly as it is written in the message (or message subpart).
-    pub fn get_raw(&self) -> &'a [u8] {
+    pub const fn get_raw(&self) -> &'a [u8] {
         self.body
     }
 
@@ -90,12 +90,12 @@ pub struct TextBody<'a> {
 
 impl<'a> TextBody<'a> {
     /// Get the body Content-Type
-    pub fn get_content_type(&self) -> &'a ParsedContentType {
+    pub const fn get_content_type(&self) -> &'a ParsedContentType {
         self.ctype
     }
 
     /// Get the raw body of the message exactly as it is written in the message (or message subpart).
-    pub fn get_raw(&self) -> &'a [u8] {
+    pub const fn get_raw(&self) -> &'a [u8] {
         self.body
     }
 
@@ -116,12 +116,12 @@ pub struct BinaryBody<'a> {
 
 impl<'a> BinaryBody<'a> {
     /// Get the body Content-Type
-    pub fn get_content_type(&self) -> &'a ParsedContentType {
+    pub const fn get_content_type(&self) -> &'a ParsedContentType {
         self.ctype
     }
 
     /// Get the raw body of the message exactly as it is written in the message (or message subpart).
-    pub fn get_raw(&self) -> &'a [u8] {
+    pub const fn get_raw(&self) -> &'a [u8] {
         self.body
     }
 

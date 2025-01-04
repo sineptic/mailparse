@@ -45,7 +45,7 @@ pub struct GroupInfo {
 }
 
 impl GroupInfo {
-    fn new(name: String, addrs: Vec<SingleInfo>) -> Self {
+    const fn new(name: String, addrs: Vec<SingleInfo>) -> Self {
         GroupInfo {
             group_name: name,
             addrs,
@@ -231,7 +231,7 @@ impl<'a> Iterator for HeaderTokenWalker<'a> {
 }
 
 impl<'a> HeaderTokenWalker<'a> {
-    fn new(tokens: Vec<HeaderToken<'a>>) -> Self {
+    const fn new(tokens: Vec<HeaderToken<'a>>) -> Self {
         Self {
             tokens,
             cur_token: 0,

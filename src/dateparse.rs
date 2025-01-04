@@ -10,7 +10,7 @@ enum DateParseState {
     Timezone,
 }
 
-fn days_in_month(month: i64, year: i64) -> i64 {
+const fn days_in_month(month: i64, year: i64) -> i64 {
     match month {
         0 | 2 | 4 | 6 | 7 | 9 | 11 => 31,
         3 | 5 | 8 | 10 => 30,

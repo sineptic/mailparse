@@ -1,3 +1,5 @@
+#![warn(clippy::missing_const_for_fn)]
+
 extern crate charset;
 extern crate data_encoding;
 extern crate quoted_printable;
@@ -233,7 +235,7 @@ impl<'a> MailHeader<'a> {
     ///     let (parsed, _) = parse_header(b"SuBJect : =?iso-8859-1?Q?=A1Hola,_se=F1or!?=").unwrap();
     ///     assert_eq!(parsed.get_key_raw(), "SuBJect ".as_bytes());
     /// ```
-    pub fn get_key_raw(&self) -> &[u8] {
+    pub const fn get_key_raw(&self) -> &[u8] {
         self.key
     }
 
@@ -246,7 +248,7 @@ impl<'a> MailHeader<'a> {
     ///     assert_eq!(parsed.get_key(), "Subject");
     ///     assert_eq!(parsed.get_value_raw(), "=?iso-8859-1?Q?=A1Hola,_se=F1or!?=".as_bytes());
     /// ```
-    pub fn get_value_raw(&self) -> &[u8] {
+    pub const fn get_value_raw(&self) -> &[u8] {
         self.value
     }
 }

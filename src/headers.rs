@@ -10,7 +10,7 @@ pub struct Headers<'a> {
 }
 
 impl<'a> Headers<'a> {
-    pub(crate) fn new(raw_bytes: &'a [u8], headers: &'a [MailHeader<'a>]) -> Headers<'a> {
+    pub(crate) const fn new(raw_bytes: &'a [u8], headers: &'a [MailHeader<'a>]) -> Headers<'a> {
         Headers { raw_bytes, headers }
     }
 
@@ -27,7 +27,7 @@ impl<'a> Headers<'a> {
     ///             "Body starts here").as_bytes())
     ///         .unwrap();
     ///     assert_eq!(mail.get_headers().get_raw_bytes(), b"SubJECT : foo\n\n");
-    pub fn get_raw_bytes(&self) -> &'a [u8] {
+    pub const fn get_raw_bytes(&self) -> &'a [u8] {
         self.raw_bytes
     }
 }
